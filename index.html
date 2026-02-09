@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Be My Valentine 💖</title>
+
+  <!-- cute google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      overflow: hidden;
+
+      background: linear-gradient(135deg, #ffd6e7, #ffc2f2, #ffe4fa);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* floating hearts background */
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    /* cute card */
+    .card {
+      background: rgba(255,255,255,0.85);
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      max-width: 350px;
+      position: relative;
+    }
+
+    h1, h2 {
+      color: #ff4d88;
+    }
+
+    button {
+      padding: 12px 26px;
+      font-size: 18px;
+      border-radius: 14px;
+      border: none;
+      margin: 8px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: white;
+      color: #ff4d6d;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    img {
+      width: 100px;
+      border-radius: 15px;
+      margin: 5px;
+    }
+
+    /* cute gif stickers */
+    .sticker {
+      position: absolute;
+      width: 90px;
+    }
+
+    .left { left: -100px; top: 30px; }
+    .right { right: -100px; bottom: 20px; }
+
+    iframe {
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- floating hearts -->
+<script>
+  for (let i = 0; i < 25; i++) {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random()*4) + "s";
+    document.body.appendChild(heart);
+  }
+</script>
+
+
+<!-- MAIN CARD -->
+<div class="card">
+
+  <!-- cute gif stickers -->
+  <img class="sticker left"
+       src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif">
+
+  <img class="sticker right"
+       src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif">
+
+
+  <!-- QUESTION -->
+  <div id="question">
+    <h1>Motu will you be my Valentine? 💘</h1>
+    <button id="yesBtn">YES 🥺❤️</button>
+    <button id="noBtn">No 😭</button>
+  </div>
+
+
+  <!-- LETTER -->
+  <div id="letter" class="hidden">
+    <h2>💌 For You</h2>
+    <p>
+    You are the most beautiful girl i know! Ever since i saw u from the start, I knew that you were the one that could be my love forever. I love u mero Motu!!!!💗
+    </p>
+    <button onclick="showSong()">Next ➜</button>
+  </div>
+
+
+  <!-- SONG -->
+  <div id="song" class="hidden">
+    <h2>🎵 Our Song</h2>
+
+    <!-- replace with your song -->
+    <iframe src="https://open.spotify.com/embed/track/3oTuTpF1F3A7rEC6RKsMRz?utm_source=generator"
+      width="350" height="120"></iframe>
+
+    <br><br>
+    <button onclick="showMemories()">Next ➜</button>
+  </div>
+
+
+  <!-- MEMORIES -->
+ <div id="memories" class="hidden">
+  <h2>📸 Our Memories</h2>
+
+  <div class="photo-container">
+    <img src="yessir.jpeg">
+    <img src="yessir2.jpeg">
+    <img src="yessir3.jpeg">
+  </div>
+
+  <h3>Forever us 💕</h3>
+</div>
+
+
+
+
+<script>
+  let size = 18;
+
+  const yes = document.getElementById("yesBtn");
+  const no = document.getElementById("noBtn");
+
+  no.addEventListener("click", () => {
+    size += 8;
+    yes.style.fontSize = size + "px";
+
+    no.style.top = Math.random() * 250 + "px";
+    no.style.left = Math.random() * 250 + "px";
+  });
+
+  yes.addEventListener("click", () => {
+    question.classList.add("hidden");
+    letter.classList.remove("hidden");
+  });
+
+  function showSong() {
+    letter.classList.add("hidden");
+    song.classList.remove("hidden");
+  }
+
+  function showMemories() {
+    song.classList.add("hidden");
+    memories.classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>
